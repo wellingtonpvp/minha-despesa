@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-if (!is_null($_SESSION)) {
-    echo "digital -> " . ($_SESSION["valor_carteira_digital"]);
-    echo "<br>";
-    echo "fisico -> " . ($_SESSION["valor_carteira_fisico"]);
-}
-
 require __DIR__ . "/vendor/autoload.php";
 
 use App\Entity\Cadastro;
