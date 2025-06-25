@@ -16,3 +16,9 @@ CREATE TABLE carteiras(
     nome VARCHAR(255) NOT NULL,
     valor DECIMAL(10, 2) NOT NULL
 );
+
+INSERT INTO carteiras 
+    (id, nome, valor) 
+VALUES
+    (1, 'digital', 0),
+    (2, 'fisico', 0);
