@@ -1,16 +1,21 @@
 <main id="formulario" class="my-3">
     <h3 class="text-center"><?= TITLE ?></h3>
     <form method="post">
+
+        <!-- titulo -->
         <div class="form-group">
             <label for="">Titulo</label>
-            <input type="text" class="form-control" name="titulo" value="<?= $registro_editar->titulo ?>">
+            <input type="text" class="form-control" name="titulo" value="<?= $registro_editar->titulo ?>" required>
         </div>
 
+        <!-- valor -->
         <div class="form-group">
             <label for="">Valor</label>
-            <input type="number" name="valor" class="form-control" value="<?= $registro_editar->valor ?>">
+            <input type="text" name="valor" class="form-control" value="<?= $registro_editar->valor ?>" required>
         </div>
 
+
+        <!-- tipo da carteira digital ou fisico -->
         <div class="form-group">
             <label>Tipo carteira</label>
             <div class="form-check">
@@ -24,6 +29,8 @@
             </div>
         </div>
 
+
+        <!-- tipo renda ou despesa -->
         <div class="form-group">
             <label>Tipo de ganho ou gasto</label>
             <div class="form-check">
