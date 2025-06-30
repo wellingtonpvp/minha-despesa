@@ -20,6 +20,6 @@ CREATE TABLE registros(
 CREATE TABLE carteiras(
     id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
     nome VARCHAR(255) NOT NULL,
-    valor DECIMAL(10, 2) NOT NULL
+    valor DECIMAL(10, 2) NasddasadsOT NULL
 );
 

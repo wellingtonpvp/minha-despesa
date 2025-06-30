@@ -20,12 +20,12 @@ $_SESSION["valor_carteira_fisico"] = $soma_renda_despesa_fisico;
 foreach ($reg_rendas as $reg_renda) {
     $result_rendas .= " 
     <p>$reg_renda->titulo R$ $reg_renda->valor 
-        <a href='apagar_registro.php?id=$reg_renda->id'>
-            <i class='text-danger bi bi-exclamation-triangle ' title='Excluir'></i>
-        </a> 
-
-        <a href='editar_registro.php?id=$reg_renda->id'>
-            <i class='bi bi-pencil'></i>
+            <a href='#'>
+                <i onclick='passaParametroExcluir($reg_renda->id)' data-bs-toggle='modal' data-bs-target='#modalApagar' class='text-danger bi-exclamation-triangle' ></i>
+            </a>
+        
+        <a href='#'>
+            <i onclick='parEditar($reg_renda->valor, $reg_renda->carteira, $reg_renda->tipo_valor, `$reg_renda->titulo`, $reg_renda->id)' data-bs-toggle='modal' data-bs-target='#modalEditar' class='bi bi-pencil'></i>
         </a>
     </p> ";
 
@@ -35,13 +35,12 @@ foreach ($reg_rendas as $reg_renda) {
 foreach ($reg_despesas as $reg_despesa) {
     $result_despesas .= " 
     <p>$reg_despesa->titulo R$ $reg_despesa->valor 
-        <a href='apagar_registro.php?id=$reg_despesa->id'>
-            <i class='text-danger bi bi-exclamation-triangle' title='Excluir'></i>
+        <i onclick='passaParametroExcluir($reg_despesa->id)' data-bs-toggle='modal' data-bs-target='#modalApagar' class='text-danger bi-exclamation-triangle'></i>
+
+        <a href='#'>
+            <i onclick='parEditar($reg_despesa->valor, $reg_despesa->carteira, $reg_despesa->tipo_valor, `$reg_despesa->titulo`, $reg_despesa->id)' data-bs-toggle='modal' data-bs-target='#modalEditar' class='bi bi-pencil'></i>
         </a>
         
-        <a href='editar_registro.php?id=$reg_despesa->id'>
-            <i class='bi bi-pencil'></i>
-        </a>
     </p> ";
 
     $total_despesa += $reg_despesa->valor;
@@ -99,4 +98,30 @@ $soma_mes = $total_renda - $total_despesa;
         <a href="gerapdf.php" class="btn btn-danger">gerar pdf</a>
         <a href="historico.php" class="btn btn-outline-danger mx-1">Historico</a>
     </div>
+
 </main>
+
+<script>
+    function passaParametroExcluir(registroId) {
+        let botaoApaga = document.querySelector("#botaoApaga").value;
+        $("#botaoApaga").val(registroId);
+    }
+
+    function parEditar(valor, cart, tipValor, titulo, id) {
+        $("#botao_editar").val(id);
+        $("#titulo_editar").val(titulo);
+        $("#valor_editar").val(valor);
+
+        if (cart.value == 'fisico') {
+            $("#fisico").prop("checked", true);
+        } else if (cart.value == 'digital') {
+            $("#digital").prop("checked", true);
+        }
+
+        if (tipValor.value == 'renda') {
+            $("#renda").prop("checked", true);
+        } else if (tipValor.value == 'despesa') {
+            $("#despesa").prop("checked", true);
+        }
+    }
+</script>
