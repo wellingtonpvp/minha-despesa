@@ -14,15 +14,6 @@ if (isset($_POST["idRegistro"])) {
     exit;
 }
 
-if (isset($_POST["edicao"])) {
-    $obCadastro = new Cadastro;
-    $obCadastro->titulo = $_POST["titulo"];
-    $obCadastro->valor = $_POST["valor"];
-    $obCadastro->carteira = $_POST["carteira"];
-    $obCadastro->tipo_valor = $_POST["tipo_valor"];
-    $obCadastro->editar($_POST["edicao"]);
-}
-
 $reg_rendas = Cadastro::getRegistros("tipo_valor = 'renda'");
 $reg_despesas = Cadastro::getRegistros("tipo_valor = 'despesa'");
 

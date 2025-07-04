@@ -20,5 +20,5 @@ CREATE TABLE carteiras(
 INSERT INTO carteiras 
     (id, nome, valor) 
 VALUES
-    (1, 'digital', 0),
-    (2, 'fisico', 0);
+    (DEFAULT, 'digital', 0),
+    (DEFAULT, 'fisico', 0);

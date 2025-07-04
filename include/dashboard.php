@@ -123,5 +123,53 @@ $soma_mes = $total_renda - $total_despesa;
         } else if (tipValor.value == 'despesa') {
             $("#despesa").prop("checked", true);
         }
+
+        $(document).ready(() => {
+            $("#botao_editar").on("click", () => {
+                let id = $("#botao_editar").val();
+                let titulo = $("#titulo_editar").val();
+                let valor = $("#valor_editar").val();
+                let carteira;
+                let tipoValor;
+
+                if ($("input[name=carteira][value=fisico]").prop("checked")) {
+                    carteira = $("#fisico").val();
+                } else if ($("input[name=carteira][value=digital]").prop("checked")) {
+                    carteira = $("#digital").val();
+                }
+
+                if ($("input[name=tipo_valor][value=renda]").prop("checked")) {
+                    tipoValor = $("#renda").val();
+                } else if ($("input[name=tipo_valor][value=despesa]").prop("checked")) {
+                    tipoValor = $("#despesa").val();
+                }
+
+                $.ajax({
+                    url: "edita.php",
+                    type: "POST",
+                    data: {
+                        id: id,
+                        titulo: titulo,
+                        valor: valor,
+                        carteira: carteira,
+                        tipoValor: tipoValor,
+                        edicao: true
+                    },
+                    beforeSend: function() {
+                        $("#mensagem").html("Editando...");
+                    },
+                    error: function(data) {
+                        $("#mensagem").html("ERROR !");
+                    },
+                    success: function(data) {
+                        $("#mensagem").html(data);
+                        $("#modalEditar").modal('hide');
+                        setInterval(() => {
+                            location.reload();
+                        }, 300);
+                    }
+                })
+            })
+        })
     }
 </script>
