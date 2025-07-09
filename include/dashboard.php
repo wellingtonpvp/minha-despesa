@@ -35,7 +35,9 @@ foreach ($reg_rendas as $reg_renda) {
 foreach ($reg_despesas as $reg_despesa) {
     $result_despesas .= " 
     <p>$reg_despesa->titulo R$ $reg_despesa->valor 
-        <i onclick='passaParametroExcluir($reg_despesa->id)' data-bs-toggle='modal' data-bs-target='#modalApagar' class='text-danger bi-exclamation-triangle'></i>
+        <a href='#'>
+            <i onclick='passaParametroExcluir($reg_despesa->id)' data-bs-toggle='modal' data-bs-target='#modalApagar' class='text-danger bi-exclamation-triangle'></i>
+        </a>
 
         <a href='#'>
             <i onclick='parEditar($reg_despesa->valor, $reg_despesa->carteira, $reg_despesa->tipo_valor, `$reg_despesa->titulo`, $reg_despesa->id)' data-bs-toggle='modal' data-bs-target='#modalEditar' class='bi bi-pencil'></i>
@@ -95,8 +97,9 @@ $soma_mes = $total_renda - $total_despesa;
     </section>
 
     <div class="d-flex flex-row-reverse mt-4">
-        <a href="gerapdf.php" class="btn btn-danger">gerar pdf</a>
-        <a href="historico.php" class="btn btn-outline-danger mx-1">Historico</a>
+        <span id="puxaDados" class="btn btn-outline-success">Puxar dados</span>
+        <a href="#" class="btn btn-danger mx-1">gerar pdf</a>
+        <a href="historico.php" class="btn btn-outline-danger">Historico</a>
     </div>
 
 </main>
@@ -168,8 +171,50 @@ $soma_mes = $total_renda - $total_despesa;
                             location.reload();
                         }, 300);
                     }
-                })
-            })
-        })
+                });
+            });
+        });
     }
+
+    $(document).ready(() => {
+        $("#puxaDados").on("click", () => {
+            $("#modalPuxaDados").modal("show");
+        })
+
+        $("#botaoPuxaDado").on("click", () => {
+
+            let id = $("#inputDados").val();
+
+            $.ajax({
+                url: "puxaDados.php",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    id: id
+                },
+                error: function(data) {
+                    $("#mensagemDados").html("Error");
+                },
+                success: function(data) {
+                    $("#mensagemDados").html(data);
+                    $("#id_dado").val(data.id);
+                    $("#titulo_dado").val(data.titulo);
+                    $("#valor_dado").val(data.valor);
+
+                    if (data.carteira == "fisico") {
+                        $("input[name=carteira][value=fisico]").prop("checked", true);
+                    } else if (data.carteira == "digital") {
+                        $("input[name=carteira][value=digital]").prop("checked", true);
+                    }
+
+                    if (data.tipo_valor == "renda") {
+                        $("input[name=tipo_valor][value=renda]").prop("checked", true);
+                    } else if (data.tipo_valor == "despesa") {
+                        $("input[name=tipo_valor][value=despesa]").prop("checked", true);
+                    }
+                }
+
+            })
+        });
+    })
 </script>

@@ -4,6 +4,7 @@ session_start();
 
 use App\Entity\Cadastro;
 use App\Entity\Carteira;
+use App\Entity\Historico;
 
 require __DIR__ . "/vendor/autoload.php";
 

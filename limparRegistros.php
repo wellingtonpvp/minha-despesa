@@ -5,8 +5,17 @@ require __DIR__ . "/vendor/autoload.php";
 
 use App\Entity\Cadastro;
 use App\Entity\Carteira;
+use App\Entity\Historico;
 
-if (isset($_POST['limpar_registros'])) {
+$valorTotal = ($_SESSION["valor_carteira_digital"] + $_SESSION["valor_carteira_fisico"]);
+
+if (isset($_GET["limpa"])) {
+    $obHistorico = new Historico;
+    $obHistorico->valorDigital = $_SESSION["valor_carteira_digital"];
+    $obHistorico->valorFisico = $_SESSION["valor_carteira_fisico"];
+    $obHistorico->valor_total = $valorTotal;
+    $obHistorico->inserirResumo();
+
     $carteiras = new Carteira;
     $carteiras->carteiraDigital = $_SESSION["valor_carteira_digital"];
     $carteiras->carteiraFisico = $_SESSION["valor_carteira_fisico"];
@@ -18,7 +27,3 @@ if (isset($_POST['limpar_registros'])) {
     header('location: index.php?status=success');
     exit;
 }
-
-include __DIR__ . "/include/header.php";
-include __DIR__ . "/include/confirma_limpar.php";
-include __DIR__ . "/include/footer.php";

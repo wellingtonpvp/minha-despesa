@@ -19,7 +19,7 @@
                 <div class="container-fluid">
                     <?php if ($_SERVER['PHP_SELF'] == "/index.php") { ?>
                         <a class="navbar-brand text-light" href="cadastro.php">Cadastro</a>
-                        <a href="limpar_registros.php" class="btn btn-primary">Limpar registros</a>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSeguranca">Limpar registros</a>
                     <?php } else { ?>
                         <a class="navbar-brand text-light" href="index.php">Inicio</a>
                     <?php }  ?>
