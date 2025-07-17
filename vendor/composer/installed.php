@@ -3,7 +3,7 @@
         'name' => 'minha/depesa',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0b4a92ba634908350ed442482b96521391d58b1f',
+        'reference' => 'fce62e0a4bb22a800ca65b80f0aec9628ee4e396',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'minha/depesa' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0b4a92ba634908350ed442482b96521391d58b1f',
+            'reference' => 'fce62e0a4bb22a800ca65b80f0aec9628ee4e396',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

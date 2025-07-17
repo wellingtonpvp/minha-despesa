@@ -98,7 +98,7 @@ $soma_mes = $total_renda - $total_despesa;
 
     <div class="d-flex flex-row-reverse mt-4">
         <span id="puxaDados" class="btn btn-outline-success">Puxar dados</span>
-        <a href="#" class="btn btn-danger mx-1">gerar pdf</a>
+        <a href="gerapdf.php" class="btn btn-danger mx-1">gerar pdf</a>
         <a href="historico.php" class="btn btn-outline-danger">Historico</a>
     </div>
 
