@@ -12,6 +12,7 @@ class Historico
     public $valorDigital;
     public $valorFisico;
     public $valor_total;
+    public $data_hora;
 
     public function inserirResumo()
     {

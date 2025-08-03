@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 19/07/2025 às 06:58
+-- Tempo de geração: 02/08/2025 às 01:51
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -38,8 +38,8 @@ CREATE TABLE `carteiras` (
 --
 
 INSERT INTO `carteiras` (`id`, `nome`, `valor`) VALUES
-(1, 'digital', 828.63),
-(2, 'fisico', 269.60);
+(1, 'digital', 833.75),
+(2, 'fisico', 270.10);
 
 -- --------------------------------------------------------
 
@@ -55,6 +55,13 @@ CREATE TABLE `historico` (
   `data_hora` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `historico`
+--
+
+INSERT INTO `historico` (`id`, `valorDigital`, `valorFisico`, `valor_total`, `data_hora`) VALUES
+(4, 828.63, 269.60, 1098.23, '2025-08-01 22:59:50');
+
 -- --------------------------------------------------------
 
 --
@@ -69,6 +76,15 @@ CREATE TABLE `registros` (
   `tipo_valor` varchar(10) NOT NULL,
   `data_cadastro` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `registros`
+--
+
+INSERT INTO `registros` (`id`, `titulo`, `valor`, `carteira`, `tipo_valor`, `data_cadastro`) VALUES
+(1, 'Pix zezinho (mensalidade)', 25.00, 'digital', 'renda', '2025-08-02 01:04:07'),
+(2, 'Pix joÃ£o (mensalidade)', 10.00, 'digital', 'renda', '2025-08-02 01:05:07'),
+(3, 'Presente para Pr. cesar', 100.00, 'fisico', 'despesa', '2025-08-02 01:21:05');
 
 --
 -- Índices para tabelas despejadas
@@ -106,13 +122,13 @@ ALTER TABLE `carteiras`
 -- AUTO_INCREMENT de tabela `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key';
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

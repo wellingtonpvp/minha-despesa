@@ -14,7 +14,7 @@
                     <td> <?= $historico->valorDigital ?></td>
                     <td> <?= $historico->valorFisico ?></td>
                     <td> <?= $historico->valor_total ?></td>
-                    <td> <?= date("d/m/Y | h-i-s", strtotime($historico->DATETIME)) ?>; </td>
+                    <td> <?= date("d/m/Y | h-i-s", strtotime($historico->data_hora)) ?>; </td>
                 </tr>
             <?php } ?>
         </tbody>
