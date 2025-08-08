@@ -17,7 +17,7 @@
         <header>
             <nav class="navbar navbar-expand-lg bg-dark">
                 <div class="container-fluid">
-                    <?php if ($_SERVER['PHP_SELF'] == "/index.php") { ?>
+                    <?php if ($_SERVER['PHP_SELF'] == "/minha-despesa/index.php") { ?>
                         <a class="navbar-brand text-light" href="cadastro.php">Cadastro</a>
                         <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSeguranca">Limpar registros</a>
                     <?php } else { ?>
