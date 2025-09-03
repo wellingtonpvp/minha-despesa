@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 02/08/2025 às 01:51
+-- Tempo de geração: 03/09/2025 às 22:23
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -38,8 +38,8 @@ CREATE TABLE `carteiras` (
 --
 
 INSERT INTO `carteiras` (`id`, `nome`, `valor`) VALUES
-(1, 'digital', 833.75),
-(2, 'fisico', 270.10);
+(1, 'digital', 972.03),
+(2, 'fisico', 120.10);
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,9 @@ CREATE TABLE `historico` (
 --
 
 INSERT INTO `historico` (`id`, `valorDigital`, `valorFisico`, `valor_total`, `data_hora`) VALUES
-(4, 828.63, 269.60, 1098.23, '2025-08-01 22:59:50');
+(4, 828.63, 269.60, 1098.23, '2025-08-01 22:59:50'),
+(5, 868.75, 170.10, 1038.85, '2025-08-08 15:37:42'),
+(6, 972.03, 120.10, 1092.13, '2025-09-03 00:42:43');
 
 -- --------------------------------------------------------
 
@@ -82,9 +84,8 @@ CREATE TABLE `registros` (
 --
 
 INSERT INTO `registros` (`id`, `titulo`, `valor`, `carteira`, `tipo_valor`, `data_cadastro`) VALUES
-(1, 'Pix zezinho (mensalidade)', 25.00, 'digital', 'renda', '2025-08-02 01:04:07'),
-(2, 'Pix joÃ£o (mensalidade)', 10.00, 'digital', 'renda', '2025-08-02 01:05:07'),
-(3, 'Presente para Pr. cesar', 100.00, 'fisico', 'despesa', '2025-08-02 01:21:05');
+(1, 'pix zezinho', 25.00, 'digital', 'renda', '2025-09-03 02:43:37'),
+(2, 'rendimento', 3.21, 'digital', 'renda', '2025-09-03 02:46:51');
 
 --
 -- Índices para tabelas despejadas
@@ -122,13 +123,13 @@ ALTER TABLE `carteiras`
 -- AUTO_INCREMENT de tabela `historico`
 --
 ALTER TABLE `historico`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
