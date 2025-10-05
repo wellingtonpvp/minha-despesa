@@ -4,9 +4,16 @@ session_start();
 
 use App\Entity\Cadastro;
 use App\Entity\Carteira;
+use App\Entity\GerarPdf;
 use App\Entity\Historico;
 
 require __DIR__ . "/vendor/autoload.php";
+
+if(isset($_GET['gerarPdf'])) {
+    $obGerarPdf = new GerarPdf;
+    $html = file_get_contents('index.php');
+    $obGerarPdf->Gerar($html);
+}
 
 if (isset($_POST["idRegistro"])) {
     $obCadastro = new Cadastro;

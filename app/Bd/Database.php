@@ -7,10 +7,10 @@ use PDOException;
 
 class Database
 {
-    const host = "localhost";
-    const dbname = "bd_mocidade";
-    const user = "root";
-    const pass = "";
+    public const host = "localhost";
+    public const dbname = "bd_mocidade";
+    public const user = "root";
+    public const pass = "1234";
 
     private $table;
     private $connection;
